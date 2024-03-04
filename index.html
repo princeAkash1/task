@@ -9,10 +9,10 @@
       rel="stylesheet"
     />
     <style>
-         body {
+      body {
         margin: 0;
         font-family: "Arvo", sans-serif;
-        background-color: #f8f8f8; 
+        background-color: #f8f8f8;
       }
 
       nav.primary-navigation {
@@ -86,11 +86,6 @@
         transition: all 0.5s ease;
       }
 
-      body {
-        margin: 0;
-        font-family: "Arvo", sans-serif;
-      }
-
       .book-details {
         display: none;
         position: fixed;
@@ -102,7 +97,7 @@
         padding: 20px;
         background: #fff;
         box-shadow: 0px 3px 5px -1px #ccc;
-        overflow-y: auto; 
+        overflow-y: auto;
         z-index: 2;
         max-height: 80%;
       }
@@ -117,38 +112,55 @@
   </head>
   <body>
     <nav role="navigation" class="primary-navigation">
-        <ul>
-          <li>
-            <a href="#" onclick="loadBookDetails('Macbeth')">Macbeth</a>
-            <div id="bookDetails" class="book-details"></div>
-          </li>
-          <li>
-            <a href="#" onclick="loadBookDetails('KingLear')">KingLear</a>
-            <div id="bookDetails" class="book-details"></div>
-          </li>
-          <li>
-            <a href="#" onclick="loadBookDetails('Hamlet')">Hamlet</a>
-            <div id="bookDetails" class="book-details"></div>
-          </li>
-          <li>
-            <a href="#" onclick="loadBookDetails('Tempest')">Tempest</a>
-            <div id="bookDetails" class="book-details"></div>
-          </li>
-          <li>
-            <a href="#" onclick="loadBookDetails('ParadiseLost')">ParadiseLost</a>
-            <div id="bookDetails" class="book-details"></div>
-          </li>
-        </ul>
-      </nav>
-  
-      <div id="bookDetails" class="book-details">
-        <span class="close-btn" onclick="hideBookDetails()">Close</span>
-        <div id="bookDetailsContent"></div>
-      </div>
-    
+      <ul>
+        <li>
+          <a href="#" onclick="loadBookDetails('Macbeth')">Macbeth</a>
+          <div class="book-details" id="macbeth-details">
+            <span class="close-btn" onclick="hideBookDetails('macbeth-details')">Close</span>
+            <div id="macbeth-content"></div>
+          </div>
+        </li>
+        <li>
+          <a href="#" onclick="loadBookDetails('KingLear')">KingLear</a>
+          <div class="book-details" id="kinglear-details">
+            <span class="close-btn" onclick="hideBookDetails('kinglear-details')">Close</span>
+            <div id="kinglear-content"></div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#" onclick="loadBookDetails('Tempest')">Tempest</a>
+          <div class="book-details" id="tempest-details">
+            <span class="close-btn" onclick="hideBookDetails('tempest-details')">Close</span>
+            <div id="tempest-content"></div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#" onclick="loadBookDetails('Hamlet')">Hamlet</a>
+          <div class="book-details" id="hamlet-details">
+            <span class="close-btn" onclick="hideBookDetails('hamlet-details')">Close</span>
+            <div id="hamlet-content"></div>
+          </div>
+        </li>
+
+        <li>
+          <a href="#" onclick="loadBookDetails('ParadiseLost')">ParadiseLost</a>
+          <div class="book-details" id="paradiselost-details">
+            <span class="close-btn" onclick="hideBookDetails('paradiselost-details')">Close</span>
+            <div id="paradiselost-content"></div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="book-details" id="bookDetails">
+      <span class="close-btn" onclick="hideBookDetails('bookDetails')">Close</span>
+      <div id="bookDetailsContent"></div>
+    </div>
+
     <script>
       function loadBookDetails(bookId) {
-        debugger;
         console.log(`Loading details for ${bookId}`);
 
         var content = "";
@@ -157,47 +169,53 @@
         // Customize content based on the bookId
         switch (bookId) {
           case "Macbeth":
-          console.log("Loading Macbeth details");
+            console.log("Loading Macbeth details");
             content = `
-        <h3>Content</h3>
-        <p>
-            Macbeth Summary. Three witches tell the Scottish general Macbeth that he will be King of Scotland. Encouraged by his wife, Macbeth kills the king, becomes the new king, and kills more people out of paranoia. Civil war erupts to overthrow Macbeth, resulting in more death.
-        </p>
-      `;
+              <h3>Content</h3>
+              <p>
+                Macbeth Summary. Three witches tell the Scottish general Macbeth that he will be King of Scotland. Encouraged by his wife, Macbeth kills the king, becomes the new king, and kills more people out of paranoia. Civil war erupts to overthrow Macbeth, resulting in more death.
+              </p>
+            `;
             author = "William Shakespeare";
             break;
 
           case "KingLear":
             content = `
-        <h3>Content</h3>
-        <p>
-            King Lear gives up his political power and lands, with his sons-in-law ruling as regents, but he keeps the title of 'king'. Lear gives his older daughters Goneril and Regan half his kingdom each to rule with their husbands and surprises everyone by disinheriting and disowning his youngest daughter Cordelia.
-        </p>
-      `;
-            author = "William Shakespeare";
-            break;
-
-          case "Hamlet":
-            content = `
-        <h3>Content</h3>
-        <p>Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet's uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge.
-        </p>`;
+              <h3>Content</h3>
+              <p>
+                King Lear gives up his political power and lands, with his sons-in-law ruling as regents, but he keeps the title of 'king'. Lear gives his older daughters Goneril and Regan half his kingdom each to rule with their husbands and surprises everyone by disinheriting and disowning his youngest daughter Cordelia.
+              </p>
+            `;
             author = "William Shakespeare";
             break;
 
           case "Tempest":
             content = `
-        <h3>Content</h3>
-        <p>Synopsis: A story of shipwreck and magic, The Tempest begins on a ship caught in a violent storm with Alonso, the king of Naples, on board. On a nearby island, the exiled Duke of Milan, Prospero, tells his daughter, Miranda, that he has caused the storm with his magical powers.
-        </p>`;
+              <h3>Content</h3>
+              <p>
+                Synopsis: A story of shipwreck and magic, The Tempest begins on a ship caught in a violent storm with Alonso, the king of Naples, on board. On a nearby island, the exiled Duke of Milan, Prospero, tells his daughter, Miranda, that he has caused the storm with his magical powers.
+              </p>
+            `;
+            author = "William Shakespeare";
+            break;
+
+          case "Hamlet":
+            content = `
+              <h3>Content</h3>
+              <p>
+                Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet's uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge.
+              </p>
+            `;
             author = "William Shakespeare";
             break;
 
           case "ParadiseLost":
             content = `
-        <h3>Content</h3>
-        <p>The poem is a retelling of the story of Adam and Eve from the biblical book of Genesis which describes the creation of Heaven and Earth and of Adam and Eve. This poem fleshes out this story and imagines the couple's reactions to the events that led to them being expelled from the Garden of Eden (or Paradise).
-        </p>`;
+              <h3>Content</h3>
+              <p>
+                The poem is a retelling of the story of Adam and Eve from the biblical book of Genesis which describes the creation of Heaven and Earth and of Adam and Eve. This poem fleshes out this story and imagines the couple's reactions to the events that led to them being expelled from the Garden of Eden (or Paradise).
+              </p>
+            `;
             author = "John Milton";
             break;
 
@@ -207,24 +225,23 @@
             break;
         }
 
-        // Display the book details container
-        var bookDetailsContent = document.getElementById("bookDetails");
+        var bookDetailsContent = document.getElementById("bookDetailsContent");
         bookDetailsContent.innerHTML = `
           ${content}
           <h3>Author:</h3>
           <p>${author}</p>
         `;
 
-        var bookDetails = document.querySelector(".book-details");
+        var bookDetails = document.getElementById("bookDetails");
         bookDetails.style.display = "block";
       }
 
-      function hideBookDetails() {
-        debugger
-        var bookDetails = document.querySelector(".book-details");
-        bookDetails.style.display = "none";
+      function hideBookDetails(bookId) {
+        var bookDetails = document.getElementById(bookId);
+        if (bookDetails) {
+          bookDetails.style.display = "none";
+        }
       }
-
     </script>
   </body>
 </html>
