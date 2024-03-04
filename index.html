@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dropdown</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Arvo&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+         body {
+        margin: 0;
+        font-family: "Arvo", sans-serif;
+        background-color: #f8f8f8; 
+      }
+
+      nav.primary-navigation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        z-index: 1000;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul li {
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        font-family: "Arvo", sans-serif;
+        padding: 0 30px;
+        border-left: 2px solid #3ca0e7;
+      }
+
+      li a {
+        color: black;
+      }
+
+      li a:hover {
+        color: #3ca0e7;
+      }
+
+      ul li ul {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        display: none;
+        background: #fff;
+        z-index: 1;
+      }
+
+      ul li:hover > ul,
+      ul li ul:hover {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+        max-width: 250px;
+        text-align: left;
+        padding-top: 20px;
+        box-shadow: 0px 3px 5px -1px #ccc;
+      }
+
+      ul li ul li a:hover {
+        padding-left: 10px;
+        border-left: 2px solid #3ca0e7;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      ul li ul li a {
+        transition: all 0.5s ease;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Arvo", sans-serif;
+      }
+
+      .book-details {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0px 3px 5px -1px #ccc;
+        overflow-y: auto; 
+        z-index: 2;
+        max-height: 80%;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <nav role="navigation" class="primary-navigation">
+        <ul>
+          <li>
+            <a href="#" onclick="loadBookDetails('Macbeth')">Macbeth</a>
+            <div id="bookDetails" class="book-details"></div>
+          </li>
+          <li>
+            <a href="#" onclick="loadBookDetails('KingLear')">KingLear</a>
+            <div id="bookDetails" class="book-details"></div>
+          </li>
+          <li>
+            <a href="#" onclick="loadBookDetails('Hamlet')">Hamlet</a>
+            <div id="bookDetails" class="book-details"></div>
+          </li>
+          <li>
+            <a href="#" onclick="loadBookDetails('Tempest')">Tempest</a>
+            <div id="bookDetails" class="book-details"></div>
+          </li>
+          <li>
+            <a href="#" onclick="loadBookDetails('ParadiseLost')">ParadiseLost</a>
+            <div id="bookDetails" class="book-details"></div>
+          </li>
+        </ul>
+      </nav>
+  
+      <div id="bookDetails" class="book-details">
+        <span class="close-btn" onclick="hideBookDetails()">Close</span>
+        <div id="bookDetailsContent"></div>
+      </div>
+    
+    <script>
+      function loadBookDetails(bookId) {
+        debugger;
+        console.log(`Loading details for ${bookId}`);
+
+        var content = "";
+        var author = "";
+
+        // Customize content based on the bookId
+        switch (bookId) {
+          case "Macbeth":
+          console.log("Loading Macbeth details");
+            content = `
+        <h3>Content</h3>
+        <p>
+            Macbeth Summary. Three witches tell the Scottish general Macbeth that he will be King of Scotland. Encouraged by his wife, Macbeth kills the king, becomes the new king, and kills more people out of paranoia. Civil war erupts to overthrow Macbeth, resulting in more death.
+        </p>
+      `;
+            author = "William Shakespeare";
+            break;
+
+          case "KingLear":
+            content = `
+        <h3>Content</h3>
+        <p>
+            King Lear gives up his political power and lands, with his sons-in-law ruling as regents, but he keeps the title of 'king'. Lear gives his older daughters Goneril and Regan half his kingdom each to rule with their husbands and surprises everyone by disinheriting and disowning his youngest daughter Cordelia.
+        </p>
+      `;
+            author = "William Shakespeare";
+            break;
+
+          case "Hamlet":
+            content = `
+        <h3>Content</h3>
+        <p>Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet's uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge.
+        </p>`;
+            author = "William Shakespeare";
+            break;
+
+          case "Tempest":
+            content = `
+        <h3>Content</h3>
+        <p>Synopsis: A story of shipwreck and magic, The Tempest begins on a ship caught in a violent storm with Alonso, the king of Naples, on board. On a nearby island, the exiled Duke of Milan, Prospero, tells his daughter, Miranda, that he has caused the storm with his magical powers.
+        </p>`;
+            author = "William Shakespeare";
+            break;
+
+          case "ParadiseLost":
+            content = `
+        <h3>Content</h3>
+        <p>The poem is a retelling of the story of Adam and Eve from the biblical book of Genesis which describes the creation of Heaven and Earth and of Adam and Eve. This poem fleshes out this story and imagines the couple's reactions to the events that led to them being expelled from the Garden of Eden (or Paradise).
+        </p>`;
+            author = "John Milton";
+            break;
+
+          default:
+            content = `<p>No content available for ${bookId}</p>`;
+            author = "Unknown";
+            break;
+        }
+
+        // Display the book details container
+        var bookDetailsContent = document.getElementById("bookDetails");
+        bookDetailsContent.innerHTML = `
+          ${content}
+          <h3>Author:</h3>
+          <p>${author}</p>
+        `;
+
+        var bookDetails = document.querySelector(".book-details");
+        bookDetails.style.display = "block";
+      }
+
+      function hideBookDetails() {
+        debugger
+        var bookDetails = document.querySelector(".book-details");
+        bookDetails.style.display = "none";
+      }
+
+    </script>
+  </body>
+</html>
